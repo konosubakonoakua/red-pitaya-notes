@@ -24,9 +24,9 @@ cell axis_fifo fifo_0 {
 }
 
 # Create xlconstant
-cell xilinx.com:ip:xlconstant const_0 {
+cell constant const_0 {
   CONST_WIDTH 32
-  CONST_VAL 85333332
+  CONST_VALUE 85333332
 }
 
 # Create axis_interpolator
@@ -41,7 +41,7 @@ cell axis_interpolator inter_0 {
 }
 
 # Create xlconstant
-cell xilinx.com:ip:xlconstant const_1
+cell constant const_1
 
 # Create dds_compiler
 cell xilinx.com:ip:dds_compiler dds_0 {

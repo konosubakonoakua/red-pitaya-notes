@@ -33,7 +33,7 @@ apply_bd_automation -rule xilinx.com:bd_rule:processing_system7 -config {
 } [get_bd_cells ps_0]
 
 # Create xlconstant
-cell xilinx.com:ip:xlconstant const_0
+cell constant const_0
 
 # Create proc_sys_reset
 cell xilinx.com:ip:proc_sys_reset rst_0 {} {
@@ -106,9 +106,9 @@ cell xilinx.com:ip:dsp_macro dsp_0 {
 # COUNTER
 
 # Create xlconstant
-cell xilinx.com:ip:xlconstant const_1 {
+cell constant const_1 {
   CONST_WIDTH 32
-  CONST_VAL 4294967295
+  CONST_VALUE 4294967295
 }
 
 # Create axis_counter
@@ -177,9 +177,9 @@ cell xilinx.com:ip:blk_mem_gen bram_0 {
 }
 
 # Create xlconstant
-cell xilinx.com:ip:xlconstant const_2 {
+cell constant const_2 {
   CONST_WIDTH 14
-  CONST_VAL 16383
+  CONST_VALUE 16383
 }
 
 # Create axis_bram_reader

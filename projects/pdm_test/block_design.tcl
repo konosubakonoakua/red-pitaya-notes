@@ -27,7 +27,7 @@ apply_bd_automation -rule xilinx.com:bd_rule:processing_system7 -config {
 } [get_bd_cells ps_0]
 
 # Create xlconstant
-cell xilinx.com:ip:xlconstant const_0
+cell constant const_0
 
 # Create proc_sys_reset
 cell xilinx.com:ip:proc_sys_reset rst_0 {} {
@@ -233,9 +233,9 @@ cell axis_fifo fifo_1 {
 }
 
 # Create xlconstant
-cell xilinx.com:ip:xlconstant const_1 {
+cell constant const_1 {
   CONST_WIDTH 8
-  CONST_VAL 49
+  CONST_VALUE 49
 }
 
 # Create axis_pdm

@@ -55,7 +55,7 @@ cell xilinx.com:ip:dds_compiler dds_0 {
 }
 
 # Create xlconstant
-cell xilinx.com:ip:xlconstant const_0
+cell constant const_0
 
 for {set i 0} {$i <= 1} {incr i} {
 

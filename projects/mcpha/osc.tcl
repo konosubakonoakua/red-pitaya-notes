@@ -78,9 +78,9 @@ cell axis_selector sel_0 {
 }
 
 # Create xlconstant
-cell xilinx.com:ip:xlconstant const_0 {
+cell constant const_0 {
   CONST_WIDTH 16
-  CONST_VAL 65535
+  CONST_VALUE 65535
 }
 
 # Create axis_trigger
@@ -128,9 +128,9 @@ cell axis_oscilloscope scope_0 {
 }
 
 # Create xlconstant
-cell xilinx.com:ip:xlconstant const_1 {
+cell constant const_1 {
   CONST_WIDTH 18
-  CONST_VAL 262143
+  CONST_VALUE 262143
 }
 
 # Create axis_ram_writer

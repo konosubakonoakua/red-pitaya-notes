@@ -120,7 +120,7 @@ cell dsp48 mult_1 {
 }
 
 # Create xlconstant
-cell xilinx.com:ip:xlconstant const_0
+cell constant const_0
 
 # Create axis_broadcaster
 cell xilinx.com:ip:axis_broadcaster bcast_1 {

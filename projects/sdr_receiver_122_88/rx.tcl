@@ -57,7 +57,7 @@ for {set i 0} {$i <= 7} {incr i} {
 }
 
 # Create xlconstant
-cell xilinx.com:ip:xlconstant const_0
+cell constant const_0
 
 for {set i 0} {$i <= 15} {incr i} {
 
