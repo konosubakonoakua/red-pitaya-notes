@@ -1,20 +1,20 @@
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_0 {
+cell port_slicer slice_0 {
   DIN_WIDTH 8 DIN_FROM 0 DIN_TO 0
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_1 {
+cell port_slicer slice_1 {
   DIN_WIDTH 32 DIN_FROM 15 DIN_TO 0
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_2 {
+cell port_slicer slice_2 {
   DIN_WIDTH 32 DIN_FROM 31 DIN_TO 16
 }
 
 # Create axis_fifo
-cell pavel-demin:user:axis_fifo fifo_0 {
+cell axis_fifo fifo_0 {
   S_AXIS_TDATA_WIDTH 32
   M_AXIS_TDATA_WIDTH 32
   WRITE_DEPTH 256
@@ -30,7 +30,7 @@ cell xilinx.com:ip:xlconstant const_0 {
 }
 
 # Create axis_interpolator
-cell pavel-demin:user:axis_interpolator inter_0 {
+cell axis_interpolator inter_0 {
   AXIS_TDATA_WIDTH 32
   CNTR_WIDTH 32
 } {
@@ -64,7 +64,7 @@ cell xilinx.com:ip:dds_compiler dds_0 {
 }
 
 # Create dsp48
-cell pavel-demin:user:dsp48 mult_0 {
+cell dsp48 mult_0 {
   A_WIDTH 16
   B_WIDTH 16
   P_WIDTH 14
@@ -75,7 +75,7 @@ cell pavel-demin:user:dsp48 mult_0 {
 }
 
 # Create dsp48
-cell pavel-demin:user:dsp48 mult_1 {
+cell dsp48 mult_1 {
   A_WIDTH 16
   B_WIDTH 16
   P_WIDTH 14
@@ -106,7 +106,7 @@ cell xilinx.com:ip:c_shift_ram delay_0 {
 }
 
 # Create axis_zeroer
-cell pavel-demin:user:axis_zeroer zeroer_0 {
+cell axis_zeroer zeroer_0 {
   AXIS_TDATA_WIDTH 32
 } {
   s_axis_tdata concat_0/dout

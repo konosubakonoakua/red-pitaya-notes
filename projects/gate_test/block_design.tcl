@@ -39,7 +39,7 @@ cell xilinx.com:ip:proc_sys_reset rst_0 {} {
 # HUB
 
 # Create axi_hub
-cell pavel-demin:user:axi_hub hub_0 {
+cell axi_hub hub_0 {
   CFG_DATA_WIDTH 64
   STS_DATA_WIDTH 32
 } {
@@ -49,28 +49,28 @@ cell pavel-demin:user:axi_hub hub_0 {
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_0 {
+cell port_slicer slice_0 {
   DIN_WIDTH 64 DIN_FROM 0 DIN_TO 0
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_1 {
+cell port_slicer slice_1 {
   DIN_WIDTH 64 DIN_FROM 1 DIN_TO 1
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_2 {
+cell port_slicer slice_2 {
   DIN_WIDTH 64 DIN_FROM 2 DIN_TO 2
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_3 {
+cell port_slicer slice_3 {
   DIN_WIDTH 64 DIN_FROM 63 DIN_TO 32
 } {
   din hub_0/cfg_data
@@ -79,7 +79,7 @@ cell pavel-demin:user:port_slicer slice_3 {
 # FIFO
 
 # Create axis_fifo
-cell pavel-demin:user:axis_fifo fifo_0 {
+cell axis_fifo fifo_0 {
   S_AXIS_TDATA_WIDTH 32
   M_AXIS_TDATA_WIDTH 128
   WRITE_DEPTH 1024
@@ -92,7 +92,7 @@ cell pavel-demin:user:axis_fifo fifo_0 {
 # GATE
 
 # Create axis_gate_controller
-cell pavel-demin:user:axis_gate_controller gate_0 {} {
+cell axis_gate_controller gate_0 {} {
   S_AXIS fifo_0/M_AXIS
   aclk pll_0/clk_out1
   aresetn slice_1/dout
@@ -109,7 +109,7 @@ cell xilinx.com:ip:xlconcat concat_0 {
 }
 
 # Create axis_constant
-cell pavel-demin:user:axis_constant phase_0 {
+cell axis_constant phase_0 {
   AXIS_TDATA_WIDTH 64
 } {
   cfg_data concat_0/dout
@@ -146,7 +146,7 @@ cell xilinx.com:ip:c_shift_ram delay_0 {
 }
 
 # Create dsp48
-cell pavel-demin:user:dsp48 mult_0 {
+cell dsp48 mult_0 {
   A_WIDTH 24
   B_WIDTH 16
   P_WIDTH 16
@@ -179,7 +179,7 @@ cell xilinx.com:ip:xlconcat concat_1 {
 }
 
 # Create axis_constant
-cell pavel-demin:user:axis_constant output_0 {
+cell axis_constant output_0 {
   AXIS_TDATA_WIDTH 32
 } {
   cfg_data concat_1/dout
@@ -189,7 +189,7 @@ cell pavel-demin:user:axis_constant output_0 {
 # FIFO
 
 # Create axis_fifo
-cell pavel-demin:user:axis_fifo fifo_1 {
+cell axis_fifo fifo_1 {
   S_AXIS_TDATA_WIDTH 32
   M_AXIS_TDATA_WIDTH 32
   WRITE_DEPTH 1024

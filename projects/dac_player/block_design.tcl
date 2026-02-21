@@ -48,7 +48,7 @@ cell xilinx.com:ip:proc_sys_reset rst_0 {} {
 # ADC
 
 # Create axis_red_pitaya_adc
-cell pavel-demin:user:axis_red_pitaya_adc adc_0 {
+cell axis_red_pitaya_adc adc_0 {
   ADC_DATA_WIDTH 14
 } {
   aclk pll_0/clk_out1
@@ -60,7 +60,7 @@ cell pavel-demin:user:axis_red_pitaya_adc adc_0 {
 # DAC
 
 # Create axis_red_pitaya_dac
-cell pavel-demin:user:axis_red_pitaya_dac dac_0 {
+cell axis_red_pitaya_dac dac_0 {
   DAC_DATA_WIDTH 14
 } {
   aclk pll_0/clk_out1
@@ -77,7 +77,7 @@ cell pavel-demin:user:axis_red_pitaya_dac dac_0 {
 # HUB
 
 # Create axi_hub
-cell pavel-demin:user:axi_hub hub_0 {
+cell axi_hub hub_0 {
   CFG_DATA_WIDTH 96
   STS_DATA_WIDTH 64
 } {
@@ -87,35 +87,35 @@ cell pavel-demin:user:axi_hub hub_0 {
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_0 {
+cell port_slicer slice_0 {
   DIN_WIDTH 96 DIN_FROM 0 DIN_TO 0
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_1 {
+cell port_slicer slice_1 {
   DIN_WIDTH 96 DIN_FROM 1 DIN_TO 1
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_2 {
+cell port_slicer slice_2 {
   DIN_WIDTH 96 DIN_FROM 63 DIN_TO 32
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_3 {
+cell port_slicer slice_3 {
   DIN_WIDTH 96 DIN_FROM 79 DIN_TO 64
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_4 {
+cell port_slicer slice_4 {
   DIN_WIDTH 96 DIN_FROM 95 DIN_TO 80
 } {
   din hub_0/cfg_data
@@ -140,7 +140,7 @@ cell xilinx.com:ip:axis_broadcaster bcast_0 {
 for {set i 0} {$i <= 1} {incr i} {
 
   # Create axis_variable
-  cell pavel-demin:user:axis_variable rate_$i {
+  cell axis_variable rate_$i {
     AXIS_TDATA_WIDTH 16
   } {
     cfg_data slice_3/dout
@@ -227,7 +227,7 @@ cell xilinx.com:ip:xlconstant const_1 {
 }
 
 # Create axis_ram_writer
-cell pavel-demin:user:axis_ram_writer writer_0 {
+cell axis_ram_writer writer_0 {
   ADDR_WIDTH 16
   AXI_ID_WIDTH 3
   AXIS_TDATA_WIDTH 16
@@ -244,7 +244,7 @@ cell pavel-demin:user:axis_ram_writer writer_0 {
 # TX
 
 # Create axis_fifo
-cell pavel-demin:user:axis_fifo fifo_0 {
+cell axis_fifo fifo_0 {
   S_AXIS_TDATA_WIDTH 32
   M_AXIS_TDATA_WIDTH 32
   WRITE_DEPTH 32768
@@ -255,7 +255,7 @@ cell pavel-demin:user:axis_fifo fifo_0 {
 }
 
 # Create axis_zeroer
-cell pavel-demin:user:axis_zeroer zeroer_0 {
+cell axis_zeroer zeroer_0 {
   AXIS_TDATA_WIDTH 32
 } {
   S_AXIS fifo_0/M_AXIS
@@ -325,7 +325,7 @@ cell xilinx.com:ip:axis_broadcaster bcast_1 {
 for {set i 0} {$i <= 1} {incr i} {
 
   # Create axis_variable
-  cell pavel-demin:user:axis_variable rate_[expr $i + 2] {
+  cell axis_variable rate_[expr $i + 2] {
     AXIS_TDATA_WIDTH 16
   } {
     cfg_data slice_4/dout

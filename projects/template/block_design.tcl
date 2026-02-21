@@ -45,7 +45,7 @@ cell xilinx.com:ip:proc_sys_reset rst_0 {} {
 # HUB
 
 # Create axi_hub
-cell pavel-demin:user:axi_hub hub_0 {
+cell axi_hub hub_0 {
   CFG_DATA_WIDTH 32
   STS_DATA_WIDTH 32
 } {
@@ -57,7 +57,7 @@ cell pavel-demin:user:axi_hub hub_0 {
 # ADC
 
 # Create axis_red_pitaya_adc
-cell pavel-demin:user:axis_red_pitaya_adc adc_0 {
+cell axis_red_pitaya_adc adc_0 {
   ADC_DATA_WIDTH 14
 } {
   aclk pll_0/clk_out1
@@ -69,7 +69,7 @@ cell pavel-demin:user:axis_red_pitaya_adc adc_0 {
 # DAC
 
 # Create axis_red_pitaya_dac
-cell pavel-demin:user:axis_red_pitaya_dac dac_0 {
+cell axis_red_pitaya_dac dac_0 {
   DAC_DATA_WIDTH 14
 } {
   aclk pll_0/clk_out1

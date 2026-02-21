@@ -1,7 +1,7 @@
 # HUB
 
 # Create axi_hub
-cell pavel-demin:user:axi_hub hub_0 {
+cell axi_hub hub_0 {
   CFG_DATA_WIDTH 64
   STS_DATA_WIDTH 32
 } {
@@ -10,21 +10,21 @@ cell pavel-demin:user:axi_hub hub_0 {
   aresetn /rst_0/peripheral_aresetn
 }
 
-cell pavel-demin:user:port_slicer rst_slice_0 {
+cell port_slicer rst_slice_0 {
   DIN_WIDTH 64 DIN_FROM 0 DIN_TO 0
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer rst_slice_1 {
+cell port_slicer rst_slice_1 {
   DIN_WIDTH 64 DIN_FROM 8 DIN_TO 8
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer cfg_slice_0 {
+cell port_slicer cfg_slice_0 {
   DIN_WIDTH 64 DIN_FROM 63 DIN_TO 32
 } {
   din hub_0/cfg_data
@@ -33,7 +33,7 @@ cell pavel-demin:user:port_slicer cfg_slice_0 {
 # LED
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer led_slice_0 {
+cell port_slicer led_slice_0 {
   DIN_WIDTH 64 DIN_FROM 23 DIN_TO 16
 } {
   din hub_0/cfg_data
@@ -49,7 +49,7 @@ delete_bd_objs [get_bd_ports /exp_p_tri_io]
 create_bd_port -dir O -from 7 -to 0 exp_p_tri_io
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer out_slice_0 {
+cell port_slicer out_slice_0 {
   DIN_WIDTH 64 DIN_FROM 31 DIN_TO 24
 } {
   din hub_0/cfg_data
@@ -63,7 +63,7 @@ delete_bd_objs [get_bd_ports /exp_n_tri_io]
 create_bd_port -dir I -from 3 -to 0 exp_n_tri_io
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer pps_slice_0 {
+cell port_slicer pps_slice_0 {
   DIN_WIDTH 4 DIN_FROM 3 DIN_TO 3
 } {
   din /exp_n_tri_io
@@ -73,7 +73,7 @@ cell pavel-demin:user:port_slicer pps_slice_0 {
 # PPS
 
 # Create axis_pps_counter
-cell pavel-demin:user:axis_pps_counter cntr_0 {
+cell axis_pps_counter cntr_0 {
   AXIS_TDATA_WIDTH 32
   CNTR_WIDTH 32
 } {
@@ -83,7 +83,7 @@ cell pavel-demin:user:axis_pps_counter cntr_0 {
 }
 
 # Create axis_fifo
-cell pavel-demin:user:axis_fifo fifo_0 {
+cell axis_fifo fifo_0 {
   S_AXIS_TDATA_WIDTH 32
   M_AXIS_TDATA_WIDTH 32
   WRITE_DEPTH 1024
@@ -116,7 +116,7 @@ cell xilinx.com:ip:axis_broadcaster bcast_0 {
 }
 
 # Create axis_decimator
-cell pavel-demin:user:axis_maxabs_finder maxabs_0 {
+cell axis_maxabs_finder maxabs_0 {
   AXIS_TDATA_WIDTH 16
   CNTR_WIDTH 32
 } {
@@ -127,7 +127,7 @@ cell pavel-demin:user:axis_maxabs_finder maxabs_0 {
 }
 
 # Create axis_decimator
-cell pavel-demin:user:axis_maxabs_finder maxabs_1 {
+cell axis_maxabs_finder maxabs_1 {
   AXIS_TDATA_WIDTH 16
   CNTR_WIDTH 32
 } {
@@ -149,7 +149,7 @@ cell  xilinx.com:ip:axis_combiner comb_0 {
 }
 
 # Create axis_fifo
-cell pavel-demin:user:axis_fifo fifo_1 {
+cell axis_fifo fifo_1 {
   S_AXIS_TDATA_WIDTH 32
   M_AXIS_TDATA_WIDTH 32
   WRITE_DEPTH 1024

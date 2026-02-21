@@ -33,7 +33,7 @@ apply_bd_automation -rule xilinx.com:bd_rule:processing_system7 -config {
 } [get_bd_cells ps_0]
 
 # Create axis_red_pitaya_dac
-cell pavel-demin:user:axis_red_pitaya_dac dac_0 {
+cell axis_red_pitaya_dac dac_0 {
   DAC_DATA_WIDTH 14
 } {
   aclk pll_0/clk_out1

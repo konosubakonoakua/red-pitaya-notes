@@ -45,7 +45,7 @@ cell xilinx.com:ip:proc_sys_reset rst_0 {} {
 # ADC
 
 # Create axis_red_pitaya_adc
-cell pavel-demin:user:axis_red_pitaya_adc adc_0 {
+cell axis_red_pitaya_adc adc_0 {
   ADC_DATA_WIDTH 14
 } {
   aclk pll_0/clk_out1
@@ -57,7 +57,7 @@ cell pavel-demin:user:axis_red_pitaya_adc adc_0 {
 # DAC
 
 # Create axis_red_pitaya_dac
-cell pavel-demin:user:axis_red_pitaya_dac dac_0 {
+cell axis_red_pitaya_dac dac_0 {
   DAC_DATA_WIDTH 14
 } {
   aclk pll_0/clk_out1

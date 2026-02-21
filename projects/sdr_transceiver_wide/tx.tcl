@@ -1,30 +1,30 @@
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_0 {
+cell port_slicer slice_0 {
   DIN_WIDTH 8 DIN_FROM 0 DIN_TO 0
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_1 {
+cell port_slicer slice_1 {
   DIN_WIDTH 64 DIN_FROM 39 DIN_TO 0
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_2 {
+cell port_slicer slice_2 {
   DIN_WIDTH 64 DIN_FROM 40 DIN_TO 40
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_3 {
+cell port_slicer slice_3 {
   DIN_WIDTH 64 DIN_FROM 41 DIN_TO 41
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_4 {
+cell port_slicer slice_4 {
   DIN_WIDTH 64 DIN_FROM 63 DIN_TO 48
 }
 
 # Create axis_fifo
-cell pavel-demin:user:axis_fifo fifo_0 {
+cell axis_fifo fifo_0 {
   S_AXIS_TDATA_WIDTH 32
   M_AXIS_TDATA_WIDTH 64
   WRITE_DEPTH 16384
@@ -108,7 +108,7 @@ cell xilinx.com:ip:axis_broadcaster bcast_0 {
 }
 
 # Create axis_variable
-cell pavel-demin:user:axis_variable rate_0 {
+cell axis_variable rate_0 {
   AXIS_TDATA_WIDTH 16
 } {
   cfg_data slice_4/dout
@@ -117,7 +117,7 @@ cell pavel-demin:user:axis_variable rate_0 {
 }
 
 # Create axis_variable
-cell pavel-demin:user:axis_variable rate_1 {
+cell axis_variable rate_1 {
   AXIS_TDATA_WIDTH 16
 } {
   cfg_data slice_4/dout
@@ -183,7 +183,7 @@ cell  xilinx.com:ip:axis_combiner comb_0 {
 }
 
 # Create axis_constant
-cell pavel-demin:user:axis_constant phase_0 {
+cell axis_constant phase_0 {
   AXIS_TDATA_WIDTH 40
 } {
   cfg_data slice_1/dout
@@ -207,7 +207,7 @@ cell xilinx.com:ip:dds_compiler dds_0 {
 }
 
 # Create axis_lfsr
-cell pavel-demin:user:axis_lfsr lfsr_0 {} {
+cell axis_lfsr lfsr_0 {} {
   aclk /pll_0/clk_out1
   aresetn /rst_0/peripheral_aresetn
 }
@@ -228,21 +228,21 @@ cell xilinx.com:ip:cmpy mult_0 {
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer dac_slice_0 {
+cell port_slicer dac_slice_0 {
   DIN_WIDTH 48 DIN_FROM 13 DIN_TO 0
 } {
   din mult_0/m_axis_dout_tdata
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer dac_slice_1 {
+cell port_slicer dac_slice_1 {
   DIN_WIDTH 48 DIN_FROM 37 DIN_TO 24
 } {
   din mult_0/m_axis_dout_tdata
 }
 
 # Create axis_zeroer
-cell pavel-demin:user:axis_zeroer zeroer_0 {
+cell axis_zeroer zeroer_0 {
   AXIS_TDATA_WIDTH 16
 } {
   s_axis_tdata dac_slice_0/dout
@@ -251,7 +251,7 @@ cell pavel-demin:user:axis_zeroer zeroer_0 {
 }
 
 # Create axis_zeroer
-cell pavel-demin:user:axis_zeroer zeroer_1 {
+cell axis_zeroer zeroer_1 {
   AXIS_TDATA_WIDTH 16
 } {
   s_axis_tdata dac_slice_1/dout

@@ -40,7 +40,7 @@ cell xilinx.com:ip:proc_sys_reset rst_0 {} {
 }
 
 # Create axi_hub
-cell pavel-demin:user:axi_hub hub_0 {
+cell axi_hub hub_0 {
   CFG_DATA_WIDTH 96
   STS_DATA_WIDTH 32
 } {
@@ -50,35 +50,35 @@ cell pavel-demin:user:axi_hub hub_0 {
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_0 {
+cell port_slicer slice_0 {
   DIN_WIDTH 96 DIN_FROM 0 DIN_TO 0
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_1 {
+cell port_slicer slice_1 {
   DIN_WIDTH 96 DIN_FROM 1 DIN_TO 1
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_2 {
+cell port_slicer slice_2 {
   DIN_WIDTH 96 DIN_FROM 63 DIN_TO 32
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_3 {
+cell port_slicer slice_3 {
   DIN_WIDTH 96 DIN_FROM 95 DIN_TO 64
 } {
   din hub_0/cfg_data
 }
 
 # Create axis_counter
-cell pavel-demin:user:axis_counter cntr_1 {} {
+cell axis_counter cntr_1 {} {
   cfg_data slice_3/dout
   aclk pll_0/clk_out1
   aresetn slice_0/dout
@@ -91,7 +91,7 @@ cell xilinx.com:ip:xlconstant const_1 {
 }
 
 # Create axis_ram_writer
-cell pavel-demin:user:axis_ram_writer writer_0 {
+cell axis_ram_writer writer_0 {
   ADDR_WIDTH 16
   AXI_ID_WIDTH 3
   AXIS_TDATA_WIDTH 32

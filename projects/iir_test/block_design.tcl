@@ -37,7 +37,7 @@ cell xilinx.com:ip:proc_sys_reset rst_0 {} {
 }
 
 # Create axi_hub
-cell pavel-demin:user:axi_hub hub_0 {
+cell axi_hub hub_0 {
   CFG_DATA_WIDTH 128
   STS_DATA_WIDTH 32
 } {
@@ -47,28 +47,28 @@ cell pavel-demin:user:axi_hub hub_0 {
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_0 {
+cell port_slicer slice_0 {
   DIN_WIDTH 128 DIN_FROM 0 DIN_TO 0
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_1 {
+cell port_slicer slice_1 {
   DIN_WIDTH 128 DIN_FROM 1 DIN_TO 1
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_2 {
+cell port_slicer slice_2 {
   DIN_WIDTH 128 DIN_FROM 47 DIN_TO 32
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_3 {
+cell port_slicer slice_3 {
   DIN_WIDTH 128 DIN_FROM 127 DIN_TO 48
 } {
   din hub_0/cfg_data
@@ -90,7 +90,7 @@ cell xilinx.com:ip:blk_mem_gen bram_0 {
 }
 
 # Create axis_bram_reader
-cell pavel-demin:user:axis_bram_reader reader_0 {
+cell axis_bram_reader reader_0 {
   AXIS_TDATA_WIDTH 64
   BRAM_DATA_WIDTH 64
   BRAM_ADDR_WIDTH 13
@@ -103,14 +103,14 @@ cell pavel-demin:user:axis_bram_reader reader_0 {
 }
 
 # Create axis_pulse_generator
-cell pavel-demin:user:axis_pulse_generator gen_0 {} {
+cell axis_pulse_generator gen_0 {} {
   S_AXIS reader_0/M_AXIS
   aclk pll_0/clk_out1
   aresetn slice_0/dout
 }
 
 # Create axis_zeroer
-cell pavel-demin:user:axis_zeroer zeroer_0 {
+cell axis_zeroer zeroer_0 {
   AXIS_TDATA_WIDTH 16
 } {
   S_AXIS gen_0/M_AXIS
@@ -118,7 +118,7 @@ cell pavel-demin:user:axis_zeroer zeroer_0 {
 }
 
 # Create axis_iir_filter
-cell pavel-demin:user:axis_iir_filter iir_0 {
+cell axis_iir_filter iir_0 {
   AXIS_TDATA_WIDTH 16
 } {
   S_AXIS zeroer_0/M_AXIS
@@ -128,7 +128,7 @@ cell pavel-demin:user:axis_iir_filter iir_0 {
 }
 
 # Create axis_fifo
-cell pavel-demin:user:axis_fifo fifo_0 {
+cell axis_fifo fifo_0 {
   S_AXIS_TDATA_WIDTH 32
   M_AXIS_TDATA_WIDTH 32
   WRITE_DEPTH 16384

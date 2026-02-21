@@ -1,75 +1,75 @@
 # scope_0/aresetn
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_0 {
+cell port_slicer slice_0 {
   DIN_WIDTH 8 DIN_FROM 0 DIN_TO 0
 }
 
 # writer_0/aresetn
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_1 {
+cell port_slicer slice_1 {
   DIN_WIDTH 8 DIN_FROM 1 DIN_TO 1
 }
 
 # sel_0/cfg_data
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_2 {
+cell port_slicer slice_2 {
   DIN_WIDTH 8 DIN_FROM 2 DIN_TO 2
 }
 
 # trig_0/pol_data
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_3 {
+cell port_slicer slice_3 {
   DIN_WIDTH 8 DIN_FROM 3 DIN_TO 3
 }
 
 # or_0/Op1
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_4 {
+cell port_slicer slice_4 {
   DIN_WIDTH 8 DIN_FROM 4 DIN_TO 4
 }
 
 # scope_0/run_flag
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_5 {
+cell port_slicer slice_5 {
   DIN_WIDTH 8 DIN_FROM 5 DIN_TO 5
 }
 
 # writer_0/cfg_data
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_6 {
+cell port_slicer slice_6 {
   DIN_WIDTH 128 DIN_FROM 31 DIN_TO 0
 }
 
 # scope_0/pre_data
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_7 {
+cell port_slicer slice_7 {
   DIN_WIDTH 128 DIN_FROM 63 DIN_TO 32
 }
 
 # scope_0/tot_data
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_8 {
+cell port_slicer slice_8 {
   DIN_WIDTH 128 DIN_FROM 95 DIN_TO 64
 }
 
 # trig_0/lvl_data
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_9 {
+cell port_slicer slice_9 {
   DIN_WIDTH 128 DIN_FROM 111 DIN_TO 96
 }
 
 # Create axis_selector
-cell pavel-demin:user:axis_selector sel_0 {
+cell axis_selector sel_0 {
   AXIS_TDATA_WIDTH 16
 } {
   cfg_data slice_2/dout
@@ -84,7 +84,7 @@ cell xilinx.com:ip:xlconstant const_0 {
 }
 
 # Create axis_trigger
-cell pavel-demin:user:axis_trigger trig_0 {
+cell axis_trigger trig_0 {
   AXIS_TDATA_WIDTH 16
   AXIS_TDATA_SIGNED TRUE
 } {
@@ -114,7 +114,7 @@ cell  xilinx.com:ip:axis_combiner comb_0 {
 }
 
 # Create axis_oscilloscope
-cell pavel-demin:user:axis_oscilloscope scope_0 {
+cell axis_oscilloscope scope_0 {
   AXIS_TDATA_WIDTH 32
   CNTR_WIDTH 23
 } {
@@ -134,7 +134,7 @@ cell xilinx.com:ip:xlconstant const_1 {
 }
 
 # Create axis_ram_writer
-cell pavel-demin:user:axis_ram_writer writer_0 {
+cell axis_ram_writer writer_0 {
   ADDR_WIDTH 18
   AXI_ID_WIDTH 3
   AXIS_TDATA_WIDTH 32

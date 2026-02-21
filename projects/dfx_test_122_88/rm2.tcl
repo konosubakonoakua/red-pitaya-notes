@@ -3,14 +3,14 @@ create_bd_port -dir I -from 31 -to 0 cfg_data
 create_bd_port -dir O -from 31 -to 0 sts_data
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_0 {
+cell port_slicer slice_0 {
   DIN_WIDTH 32 DIN_FROM 15 DIN_TO 0
 } {
   din cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_1 {
+cell port_slicer slice_1 {
   DIN_WIDTH 32 DIN_FROM 31 DIN_TO 16
 } {
   din cfg_data

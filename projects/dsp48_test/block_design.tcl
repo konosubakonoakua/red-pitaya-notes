@@ -37,7 +37,7 @@ cell xilinx.com:ip:proc_sys_reset rst_0 {} {
 }
 
 # Create axi_hub
-cell pavel-demin:user:axi_hub hub_0 {
+cell axi_hub hub_0 {
   CFG_DATA_WIDTH 64
   STS_DATA_WIDTH 32
 } {
@@ -47,21 +47,21 @@ cell pavel-demin:user:axi_hub hub_0 {
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_0 {
+cell port_slicer slice_0 {
   DIN_WIDTH 64 DIN_FROM 23 DIN_TO 0
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_1 {
+cell port_slicer slice_1 {
   DIN_WIDTH 64 DIN_FROM 47 DIN_TO 32
 } {
   din hub_0/cfg_data
 }
 
 # Create dsp48
-cell pavel-demin:user:dsp48 dsp_0 {
+cell dsp48 dsp_0 {
   A_WIDTH 24
   B_WIDTH 16
   P_WIDTH 24

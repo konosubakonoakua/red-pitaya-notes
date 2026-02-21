@@ -45,7 +45,7 @@ cell xilinx.com:ip:proc_sys_reset rst_0 {} {
 # ADC
 
 # Create axis_red_pitaya_adc
-cell pavel-demin:user:axis_red_pitaya_adc adc_0 {
+cell axis_red_pitaya_adc adc_0 {
   ADC_DATA_WIDTH 14
 } {
   aclk pll_0/clk_out1
@@ -57,7 +57,7 @@ cell pavel-demin:user:axis_red_pitaya_adc adc_0 {
 # DAC
 
 # Create axis_red_pitaya_dac
-cell pavel-demin:user:axis_red_pitaya_dac dac_0 {
+cell axis_red_pitaya_dac dac_0 {
   DAC_DATA_WIDTH 14
 } {
   aclk pll_0/clk_out1
@@ -74,7 +74,7 @@ cell pavel-demin:user:axis_red_pitaya_dac dac_0 {
 # HUB
 
 # Create axi_hub
-cell pavel-demin:user:axi_hub hub_0 {
+cell axi_hub hub_0 {
   CFG_DATA_WIDTH 128
   STS_DATA_WIDTH 64
 } {
@@ -86,14 +86,14 @@ cell pavel-demin:user:axi_hub hub_0 {
 # TX
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer rst_slice_0 {
+cell port_slicer rst_slice_0 {
   DIN_WIDTH 128 DIN_FROM 7 DIN_TO 0
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer cfg_slice_0 {
+cell port_slicer cfg_slice_0 {
   DIN_WIDTH 128 DIN_FROM 63 DIN_TO 32
 } {
   din hub_0/cfg_data
@@ -110,7 +110,7 @@ module tx_0 {
 # RX
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer cfg_slice_1 {
+cell port_slicer cfg_slice_1 {
   DIN_WIDTH 128 DIN_FROM 127 DIN_TO 64
 } {
   din hub_0/cfg_data
@@ -169,14 +169,14 @@ cell xilinx.com:ip:xlconcat concat_0 {
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer exp_slice_0 {
+cell port_slicer exp_slice_0 {
   DIN_WIDTH 128 DIN_FROM 1 DIN_TO 1
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer exp_slice_1 {
+cell port_slicer exp_slice_1 {
   DIN_WIDTH 128 DIN_FROM 14 DIN_TO 8
 } {
   din hub_0/cfg_data

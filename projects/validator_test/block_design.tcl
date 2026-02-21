@@ -37,7 +37,7 @@ cell xilinx.com:ip:proc_sys_reset rst_0 {} {
 }
 
 # Create axis_red_pitaya_adc
-cell pavel-demin:user:axis_red_pitaya_adc adc_0 {
+cell axis_red_pitaya_adc adc_0 {
   ADC_DATA_WIDTH 14
 } {
   aclk pll_0/clk_out1
@@ -47,7 +47,7 @@ cell pavel-demin:user:axis_red_pitaya_adc adc_0 {
 }
 
 # Create axi_hub
-cell pavel-demin:user:axi_hub hub_0 {
+cell axi_hub hub_0 {
   CFG_DATA_WIDTH 32
   STS_DATA_WIDTH 32
 } {
@@ -57,14 +57,14 @@ cell pavel-demin:user:axi_hub hub_0 {
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_0 {
+cell port_slicer slice_0 {
   DIN_WIDTH 32 DIN_FROM 0 DIN_TO 0
 } {
   din hub_0/cfg_data
 }
 
 # Create axis_gpio_reader
-cell pavel-demin:user:axis_gpio_reader gpio_0 {
+cell axis_gpio_reader gpio_0 {
   AXIS_TDATA_WIDTH 8
 } {
   gpio_data exp_p_tri_io
@@ -72,7 +72,7 @@ cell pavel-demin:user:axis_gpio_reader gpio_0 {
 }
 
 # Create axis_trigger
-cell pavel-demin:user:axis_trigger trig_0 {
+cell axis_trigger trig_0 {
   AXIS_TDATA_WIDTH 8
   AXIS_TDATA_SIGNED FALSE
 } {
@@ -84,7 +84,7 @@ cell pavel-demin:user:axis_trigger trig_0 {
 }
 
 # Create axis_validator
-cell pavel-demin:user:axis_validator vldtr_0 {
+cell axis_validator vldtr_0 {
   AXIS_TDATA_WIDTH 32
 } {
   S_AXIS adc_0/M_AXIS
@@ -108,7 +108,7 @@ cell xilinx.com:ip:blk_mem_gen bram_0 {
 }
 
 # Create axis_bram_writer
-cell pavel-demin:user:axis_bram_writer writer_0 {
+cell axis_bram_writer writer_0 {
   AXIS_TDATA_WIDTH 32
   BRAM_DATA_WIDTH 32
   BRAM_ADDR_WIDTH 10

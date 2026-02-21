@@ -45,7 +45,7 @@ cell xilinx.com:ip:proc_sys_reset rst_0 {} {
 # HUB
 
 # Create axi_hub
-cell pavel-demin:user:axi_hub hub_0 {
+cell axi_hub hub_0 {
   CFG_DATA_WIDTH 96
   STS_DATA_WIDTH 64
 } {
@@ -55,7 +55,7 @@ cell pavel-demin:user:axi_hub hub_0 {
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_0 {
+cell port_slicer slice_0 {
   DIN_WIDTH 96 DIN_FROM 0 DIN_TO 0
 } {
   din hub_0/cfg_data
@@ -64,7 +64,7 @@ cell pavel-demin:user:port_slicer slice_0 {
 # LED
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_1 {
+cell port_slicer slice_1 {
   DIN_WIDTH 96 DIN_FROM 39 DIN_TO 32
 } {
   din hub_0/cfg_data
@@ -74,14 +74,14 @@ cell pavel-demin:user:port_slicer slice_1 {
 # DSP48
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_2 {
+cell port_slicer slice_2 {
   DIN_WIDTH 96 DIN_FROM 79 DIN_TO 64
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_3 {
+cell port_slicer slice_3 {
   DIN_WIDTH 96 DIN_FROM 95 DIN_TO 80
 } {
   din hub_0/cfg_data
@@ -112,7 +112,7 @@ cell xilinx.com:ip:xlconstant const_1 {
 }
 
 # Create axis_counter
-cell pavel-demin:user:axis_counter cntr_0 {
+cell axis_counter cntr_0 {
   CONTINUOUS TRUE
 } {
   M_AXIS hub_0/S01_AXIS
@@ -124,7 +124,7 @@ cell pavel-demin:user:axis_counter cntr_0 {
 # XADC
 
 # Create xadc_bram
-cell pavel-demin:user:xadc_bram xadc_0 {} {
+cell xadc_bram xadc_0 {} {
   B_BRAM hub_0/B02_BRAM
   Vp_Vn Vp_Vn
   Vaux0 Vaux0
@@ -136,7 +136,7 @@ cell pavel-demin:user:xadc_bram xadc_0 {} {
 # ADC
 
 # Create axis_red_pitaya_adc
-cell pavel-demin:user:axis_red_pitaya_adc adc_0 {
+cell axis_red_pitaya_adc adc_0 {
   ADC_DATA_WIDTH 14
 } {
   aclk pll_0/clk_out1
@@ -148,7 +148,7 @@ cell pavel-demin:user:axis_red_pitaya_adc adc_0 {
 # FIFO
 
 # Create axis_fifo
-cell pavel-demin:user:axis_fifo fifo_0 {
+cell axis_fifo fifo_0 {
   S_AXIS_TDATA_WIDTH 32
   M_AXIS_TDATA_WIDTH 32
   WRITE_DEPTH 16384
@@ -183,7 +183,7 @@ cell xilinx.com:ip:xlconstant const_2 {
 }
 
 # Create axis_bram_reader
-cell pavel-demin:user:axis_bram_reader reader_0 {
+cell axis_bram_reader reader_0 {
   AXIS_TDATA_WIDTH 32
   BRAM_DATA_WIDTH 32
   BRAM_ADDR_WIDTH 14
@@ -198,7 +198,7 @@ cell pavel-demin:user:axis_bram_reader reader_0 {
 # DAC
 
 # Create axis_red_pitaya_dac
-cell pavel-demin:user:axis_red_pitaya_dac dac_0 {
+cell axis_red_pitaya_dac dac_0 {
   DAC_DATA_WIDTH 14
 } {
   aclk pll_0/clk_out1

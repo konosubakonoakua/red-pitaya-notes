@@ -37,7 +37,7 @@ cell xilinx.com:ip:proc_sys_reset rst_0 {} {
 }
 
 # Create axi_hub
-cell pavel-demin:user:axi_hub hub_0 {
+cell axi_hub hub_0 {
   CFG_DATA_WIDTH 32
   STS_DATA_WIDTH 32
 } {
@@ -47,28 +47,28 @@ cell pavel-demin:user:axi_hub hub_0 {
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_0 {
+cell port_slicer slice_0 {
   DIN_WIDTH 32 DIN_FROM 0 DIN_TO 0
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_1 {
+cell port_slicer slice_1 {
   DIN_WIDTH 32 DIN_FROM 1 DIN_TO 1
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_2 {
+cell port_slicer slice_2 {
   DIN_WIDTH 32 DIN_FROM 31 DIN_TO 16
 } {
   din hub_0/cfg_data
 }
 
 # Create axis_fifo
-cell pavel-demin:user:axis_fifo fifo_0 {
+cell axis_fifo fifo_0 {
   S_AXIS_TDATA_WIDTH 32
   M_AXIS_TDATA_WIDTH 32
   WRITE_DEPTH 1024
@@ -188,7 +188,7 @@ cell xilinx.com:ip:cic_compiler cic_0 {
 }
 
 # Create dsp48
-cell pavel-demin:user:dsp48 mult_0 {
+cell dsp48 mult_0 {
   A_WIDTH 24
   B_WIDTH 16
   P_WIDTH 18
@@ -222,7 +222,7 @@ cell xilinx.com:ip:axis_dwidth_converter conv_1 {
 }
 
 # Create axis_fifo
-cell pavel-demin:user:axis_fifo fifo_1 {
+cell axis_fifo fifo_1 {
   S_AXIS_TDATA_WIDTH 32
   M_AXIS_TDATA_WIDTH 32
   WRITE_DEPTH 1024
@@ -239,7 +239,7 @@ cell xilinx.com:ip:xlconstant const_1 {
 }
 
 # Create axis_pdm
-cell pavel-demin:user:axis_pdm pdm_0 {
+cell axis_pdm pdm_0 {
   AXIS_TDATA_WIDTH 16
   CNTR_WIDTH 8
 } {

@@ -45,7 +45,7 @@ cell xilinx.com:ip:proc_sys_reset rst_0 {} {
 # ADC
 
 # Create axis_red_pitaya_adc
-cell pavel-demin:user:axis_red_pitaya_adc adc_0 {
+cell axis_red_pitaya_adc adc_0 {
   ADC_DATA_WIDTH 16
 } {
   aclk pll_0/clk_out1
@@ -57,7 +57,7 @@ cell pavel-demin:user:axis_red_pitaya_adc adc_0 {
 # DAC
 
 # Create axis_red_pitaya_dac
-cell pavel-demin:user:axis_red_pitaya_dac dac_0 {
+cell axis_red_pitaya_dac dac_0 {
   DAC_DATA_WIDTH 14
 } {
   aclk pll_0/clk_out1
@@ -82,7 +82,7 @@ create_bd_port -dir O -from 7 -to 0 exp_p_tri_io
 # HUB
 
 # Create axi_hub
-cell pavel-demin:user:axi_hub hub_0 {
+cell axi_hub hub_0 {
   CFG_DATA_WIDTH 160
   STS_DATA_WIDTH 32
 } {
@@ -92,21 +92,21 @@ cell pavel-demin:user:axi_hub hub_0 {
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_0 {
+cell port_slicer slice_0 {
   DIN_WIDTH 160 DIN_FROM 0 DIN_TO 0
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_1 {
+cell port_slicer slice_1 {
   DIN_WIDTH 160 DIN_FROM 1 DIN_TO 1
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_2 {
+cell port_slicer slice_2 {
   DIN_WIDTH 160 DIN_FROM 15 DIN_TO 8
 } {
   din hub_0/cfg_data
@@ -114,35 +114,35 @@ cell pavel-demin:user:port_slicer slice_2 {
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_3 {
+cell port_slicer slice_3 {
   DIN_WIDTH 160 DIN_FROM 63 DIN_TO 32
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_4 {
+cell port_slicer slice_4 {
   DIN_WIDTH 160 DIN_FROM 95 DIN_TO 64
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_5 {
+cell port_slicer slice_5 {
   DIN_WIDTH 160 DIN_FROM 127 DIN_TO 96
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_6 {
+cell port_slicer slice_6 {
   DIN_WIDTH 160 DIN_FROM 143 DIN_TO 128
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_7 {
+cell port_slicer slice_7 {
   DIN_WIDTH 160 DIN_FROM 159 DIN_TO 144
 } {
   din hub_0/cfg_data
@@ -151,7 +151,7 @@ cell pavel-demin:user:port_slicer slice_7 {
 # DDS
 
 # Create axis_fifo
-cell pavel-demin:user:axis_fifo fifo_0 {
+cell axis_fifo fifo_0 {
   S_AXIS_TDATA_WIDTH 32
   M_AXIS_TDATA_WIDTH 32
   WRITE_DEPTH 32768
@@ -162,7 +162,7 @@ cell pavel-demin:user:axis_fifo fifo_0 {
 }
 
 # Create axis_interpolator
-cell pavel-demin:user:axis_interpolator inter_0 {
+cell axis_interpolator inter_0 {
   AXIS_TDATA_WIDTH 32
   CNTR_WIDTH 32
 } {
@@ -233,7 +233,7 @@ for {set i 0} {$i <= 1} {incr i} {
 # TX
 
 # Create dsp48
-cell pavel-demin:user:dsp48 mult_4 {
+cell dsp48 mult_4 {
   A_WIDTH 24
   B_WIDTH 16
   P_WIDTH 14
@@ -244,7 +244,7 @@ cell pavel-demin:user:dsp48 mult_4 {
 }
 
 # Create dsp48
-cell pavel-demin:user:dsp48 mult_5 {
+cell dsp48 mult_5 {
   A_WIDTH 24
   B_WIDTH 16
   P_WIDTH 14
@@ -275,7 +275,7 @@ cell xilinx.com:ip:c_shift_ram delay_0 {
 }
 
 # Create axis_zeroer
-cell pavel-demin:user:axis_zeroer zeroer_0 {
+cell axis_zeroer zeroer_0 {
   AXIS_TDATA_WIDTH 32
 } {
   s_axis_tdata concat_2/dout
@@ -289,7 +289,7 @@ cell pavel-demin:user:axis_zeroer zeroer_0 {
 for {set i 0} {$i <= 1} {incr i} {
 
   # Create port_slicer
-  cell pavel-demin:user:port_slicer dds_slice_$i {
+  cell port_slicer dds_slice_$i {
     DIN_WIDTH 48 DIN_FROM [expr 24 * $i + 23] DIN_TO [expr 24 * $i]
   } {
     din dds_0/m_axis_data_tdata
@@ -300,14 +300,14 @@ for {set i 0} {$i <= 1} {incr i} {
 for {set i 0} {$i <= 3} {incr i} {
 
   # Create port_slicer
-  cell pavel-demin:user:port_slicer adc_slice_$i {
+  cell port_slicer adc_slice_$i {
     DIN_WIDTH 32 DIN_FROM [expr 16 * ($i / 2) + 15] DIN_TO [expr 16 * ($i / 2)]
   } {
     din adc_0/m_axis_tdata
   }
 
   # Create dsp48
-  cell pavel-demin:user:dsp48 mult_$i {
+  cell dsp48 mult_$i {
     A_WIDTH 24
     B_WIDTH 16
     P_WIDTH 24
@@ -394,7 +394,7 @@ cell xilinx.com:ip:axis_dwidth_converter conv_1 {
 }
 
 # Create axis_fifo
-cell pavel-demin:user:axis_fifo fifo_1 {
+cell axis_fifo fifo_1 {
   S_AXIS_TDATA_WIDTH 128
   M_AXIS_TDATA_WIDTH 32
   WRITE_DEPTH 512

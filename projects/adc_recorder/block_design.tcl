@@ -50,7 +50,7 @@ create_bd_port -dir O -from 7 -to 0 exp_p_tri_io
 # ADC
 
 # Create axis_red_pitaya_adc
-cell pavel-demin:user:axis_red_pitaya_adc adc_0 {
+cell axis_red_pitaya_adc adc_0 {
   ADC_DATA_WIDTH 14
 } {
   aclk pll_0/clk_out1
@@ -60,7 +60,7 @@ cell pavel-demin:user:axis_red_pitaya_adc adc_0 {
 }
 
 # Create axi_hub
-cell pavel-demin:user:axi_hub hub_0 {
+cell axi_hub hub_0 {
   CFG_DATA_WIDTH 96
   STS_DATA_WIDTH 32
 } {
@@ -70,35 +70,35 @@ cell pavel-demin:user:axi_hub hub_0 {
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_0 {
+cell port_slicer slice_0 {
   DIN_WIDTH 96 DIN_FROM 0 DIN_TO 0
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_1 {
+cell port_slicer slice_1 {
   DIN_WIDTH 96 DIN_FROM 1 DIN_TO 1
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_2 {
+cell port_slicer slice_2 {
   DIN_WIDTH 96 DIN_FROM 2 DIN_TO 2
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_3 {
+cell port_slicer slice_3 {
   DIN_WIDTH 96 DIN_FROM 63 DIN_TO 32
 } {
   din hub_0/cfg_data
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_4 {
+cell port_slicer slice_4 {
   DIN_WIDTH 96 DIN_FROM 95 DIN_TO 64
 } {
   din hub_0/cfg_data
@@ -209,7 +209,7 @@ cell xilinx.com:ip:fir_compiler fir_0 {
 }
 
 # Create axis_packetizer
-cell pavel-demin:user:axis_packetizer pktzr_0 {
+cell axis_packetizer pktzr_0 {
   AXIS_TDATA_WIDTH 32
   CNTR_WIDTH 32
   CONTINUOUS FALSE
@@ -227,7 +227,7 @@ cell xilinx.com:ip:xlconstant const_1 {
 }
 
 # Create axis_ram_writer
-cell pavel-demin:user:axis_ram_writer writer_0 {
+cell axis_ram_writer writer_0 {
   ADDR_WIDTH 18
   AXI_ID_WIDTH 3
   AXIS_TDATA_WIDTH 32

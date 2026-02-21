@@ -1,20 +1,20 @@
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_0 {
+cell port_slicer slice_0 {
   DIN_WIDTH 8 DIN_FROM 2 DIN_TO 2
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_1 {
+cell port_slicer slice_1 {
   DIN_WIDTH 64 DIN_FROM 31 DIN_TO 0
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_2 {
+cell port_slicer slice_2 {
   DIN_WIDTH 64 DIN_FROM 47 DIN_TO 32
 }
 
 # Create port_slicer
-cell pavel-demin:user:port_slicer slice_3 {
+cell port_slicer slice_3 {
   DIN_WIDTH 64 DIN_FROM 63 DIN_TO 48
 }
 
@@ -29,7 +29,7 @@ cell xilinx.com:ip:xlconcat concat_0 {
 }
 
 # Create axis_constant
-cell pavel-demin:user:axis_constant phase_0 {
+cell axis_constant phase_0 {
   AXIS_TDATA_WIDTH 65
 } {
   cfg_data concat_0/dout
@@ -60,7 +60,7 @@ cell xilinx.com:ip:xlconstant const_0
 for {set i 0} {$i <= 1} {incr i} {
 
   # Create port_slicer
-  cell pavel-demin:user:port_slicer dds_slice_$i {
+  cell port_slicer dds_slice_$i {
     DIN_WIDTH 48 DIN_FROM [expr 24 * $i + 23] DIN_TO [expr 24 * $i]
   } {
     din dds_0/m_axis_data_tdata
@@ -71,14 +71,14 @@ for {set i 0} {$i <= 1} {incr i} {
 for {set i 0} {$i <= 3} {incr i} {
 
   # Create port_slicer
-  cell pavel-demin:user:port_slicer adc_slice_$i {
+  cell port_slicer adc_slice_$i {
     DIN_WIDTH 32 DIN_FROM [expr 16 * ($i / 2) + 13] DIN_TO [expr 16 * ($i / 2)]
   } {
     din /adc_0/m_axis_tdata
   }
 
   # Create dsp48
-  cell pavel-demin:user:dsp48 mult_$i {
+  cell dsp48 mult_$i {
     A_WIDTH 24
     B_WIDTH 14
     P_WIDTH 24
@@ -89,7 +89,7 @@ for {set i 0} {$i <= 3} {incr i} {
   }
 
   # Create axis_variable
-  cell pavel-demin:user:axis_variable rate_$i {
+  cell axis_variable rate_$i {
     AXIS_TDATA_WIDTH 16
   } {
     cfg_data slice_2/dout
@@ -214,7 +214,7 @@ cell xilinx.com:ip:axis_dwidth_converter conv_1 {
 }
 
 # Create axis_fifo
-cell pavel-demin:user:axis_fifo fifo_0 {
+cell axis_fifo fifo_0 {
   S_AXIS_TDATA_WIDTH 128
   M_AXIS_TDATA_WIDTH 32
   WRITE_DEPTH 4096
@@ -225,7 +225,7 @@ cell pavel-demin:user:axis_fifo fifo_0 {
 }
 
 # Create dsp48
-cell pavel-demin:user:dsp48 mult_4 {
+cell dsp48 mult_4 {
   A_WIDTH 24
   B_WIDTH 16
   P_WIDTH 14
@@ -236,7 +236,7 @@ cell pavel-demin:user:dsp48 mult_4 {
 }
 
 # Create axis_constant
-cell pavel-demin:user:axis_constant output_0 {
+cell axis_constant output_0 {
   AXIS_TDATA_WIDTH 16
 } {
   cfg_data mult_4/P
